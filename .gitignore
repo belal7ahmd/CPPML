@@ -1,0 +1,47 @@
+# CMake Build Outputs & Artifacts
+build/
+Build/
+cmake-build-*/
+CMakeCache.txt
+CMakeFiles/
+CMakeCheckOutputs/
+CMakeScripts/
+Makefile
+cmake_install.cmake
+install_manifest.txt
+compile_commands.json
+
+# Compiled Binaries & Static Libraries
+*.a
+*.lib
+*.so
+*.dylib
+*.dll
+*.exe
+*.out
+
+# Target executables from your CMake layout
+/run_app
+/run_tests
+
+# IDE & System Specific Files
+
+# VS Code
+.vscode/
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+
+# CLion / JetBrains
+.idea/
+
+# Visual Studio (MSVC)
+.vs/
+*.sln
+*.vcxproj
+*.filters
+*.user
+
+# OS specific
+.DS_Store
+Thumbs.db
