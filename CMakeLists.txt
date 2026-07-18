@@ -1,16 +1,18 @@
 cmake_minimum_required(VERSION 3.15)
 
-project(CPPML VERSION 0.1.0 LANGUAGES CXX)
-
-set(CMAKE_CXX_STANDARD 20)
-set(CMAKE_CXX_STANDARD_REQUIRED ON)
-
-# Optimization flags 
+# Optimization flags
 if(MSVC)
     add_compile_options(/O2 /arch:AVX2)
 else()
     add_compile_options(-O3 -march=native)
 endif()
+
+set(CMAKE_CONFIGURATION_TYPES "Release" CACHE STRING "" FORCE)
+
+project(CPPML VERSION 0.1.0 LANGUAGES CXX)
+
+set(CMAKE_CXX_STANDARD 20)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 
 # Bundle files into lib
@@ -41,6 +43,8 @@ FetchContent_Declare(
 FetchContent_MakeAvailable(Catch2)
 
 # Make the test executable
-add_executable(run_tests tests/test.cpp)
+add_executable(run_tests 
+    tests/Matmul.cpp
+)
 target_link_libraries(run_tests PRIVATE ml_core)
 target_link_libraries(run_tests PRIVATE Catch2::Catch2WithMain)

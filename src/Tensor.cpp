@@ -118,13 +118,16 @@ void Tensor::matmul(const Tensor& mat_a, const Tensor& mat_b, Tensor& dst) {
 
     dst.fill(0.0f);
 
+    // Standard i-k-j Loop
     for (size_t i = 0; i < mat_a.shape[0]; i++) {
-        for (size_t j = 0; j < mat_b.shape[1]; j++) {
-            for (size_t k = 0; k < mat_a.shape[1]; k++) {
+        for (size_t k = 0; k < mat_a.shape[1]; k++) {
+            
+            for (size_t j = 0; j < mat_b.shape[1]; j++) {
                 *dst.at({i, j}) += (*mat_a.at({i, k})) * (*mat_b.at({k, j}));
             }
         }
     }
+
 
 };
 

@@ -6,7 +6,6 @@
 #include  <random>
 
 class Tensor {
-    public:
     float* data;
 
     std::vector<size_t> strides;
