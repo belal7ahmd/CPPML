@@ -8,12 +8,11 @@
 class Tensor {
     float* data;
 
-    std::vector<size_t> strides;
-
     bool is_owner;
 
     public:
 
+    std::vector<size_t> strides;
     std::vector<size_t> shape;
     size_t size;
 

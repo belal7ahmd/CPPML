@@ -118,12 +118,18 @@ void Tensor::matmul(const Tensor& mat_a, const Tensor& mat_b, Tensor& dst) {
 
     dst.fill(0.0f);
 
+    const float* a_data = mat_a.begin();
+    const float* b_data = mat_b.begin();
+    float* dst_data = dst.begin();
+
     // Standard i-k-j Loop
     for (size_t i = 0; i < mat_a.shape[0]; i++) {
         for (size_t k = 0; k < mat_a.shape[1]; k++) {
             
             for (size_t j = 0; j < mat_b.shape[1]; j++) {
-                *dst.at({i, j}) += (*mat_a.at({i, k})) * (*mat_b.at({k, j}));
+                dst_data[(dst.strides[0] * i) + (dst.strides[1] * j)] += 
+                a_data[(mat_a.strides[0] * i) + (mat_a.strides[1] * k)] * 
+                b_data[(mat_b.strides[0] * k) + (mat_b.strides[1] * j)];
             }
         }
     }

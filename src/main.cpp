@@ -103,7 +103,7 @@ int main() {
     srand(time(0));
 
     std::vector<Layer*> network_layers = {
-        new DenseLayer(2, 2), // Hidden layer: 2 inputs, 4 neurons 1 output
+        new DenseLayer(2, 2), 
         new DenseLayer(2, 1),
     };
 
@@ -128,7 +128,7 @@ int main() {
     };
 
     float lr_rate = 1e-1;
-    int epochs = 10000; 
+    int epochs = 100000; 
     size_t batch_size = 1;
 
     test_model(xor_inputs, xor_targets, model);
